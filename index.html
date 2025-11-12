@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TOPdesk Public Form Demo</title>
+  <style>
+    :root {
+      --bg: #0f172a;      /* page background */
+      --card: #ffffff;    /* form card background */
+      --text: #0f172a;    /* text color */
+      --accent: #2563eb;  /* header underline */
+    }
+    html, body { height: 100%; margin: 0; }
+    body {
+      background: var(--bg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    .wrap {
+      width: min(900px, 95vw);
+    }
+    header {
+      color: white;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 28px;
+      margin: 0 0 6px;
+    }
+    header p {
+      margin: 0;
+      opacity: .85;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.2);
+      border-top: 4px solid var(--accent);
+    }
+    /* Optional: tweak the container that TOPdesk injects into */
+    #td-public-forms-target {
+      min-height: 520px; /* for nicer initial paint */
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Customer Support — Demo Form</h1>
+      <p>Embedded TOPdesk public form in a simple demo page.</p>
+    </header>
+
+    <div class="card">
+      <!-- TOPdesk form mounts here -->
+      <div id="td-public-forms-target"></div>
+    </div>
+  </div>
+
+  <!-- TOPdesk form script + init -->
+  <script src="https://itsoftware-test.topdesk.net/solutions/forms/static/public-forms-api.js"></script>
+  <script>
+    var params = {
+      topdeskUrl: 'https://itsoftware-test.topdesk.net',
+      formId: '1396febc-e051-4bb8-a8f8-59cb6aa273b1',
+      gatewayToken: 'c24673f3-4e3c-4f69-ac8f-05b9b150af11',
+      width: '100%',      // use card width responsively
+      height: '500px'
+    };
+    initTOPdeskForm(params);
+  </script>
+</body>
+</html>
